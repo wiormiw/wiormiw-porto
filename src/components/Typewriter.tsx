@@ -17,11 +17,29 @@ export default function Typewriter({
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    const startTimeout = setTimeout(() => {
-      setStarted(true);
-    }, delay);
+    // Standard delay logic (for fallback)
+    const beginTyping = () => {
+      setTimeout(() => {
+        setStarted(true);
+      }, delay);
+    };
 
-    return () => clearTimeout(startTimeout);
+    const handleLoaderComplete = () => {
+      // Start IMMEDIATELY when the loader says so.
+      setStarted(true);
+    };
+
+    window.addEventListener('loader-complete', handleLoaderComplete);
+
+    // Safety fallback: If loader never fires, start anyway after delay + timeout
+    const safetyTimer = setTimeout(() => {
+      if (!started) beginTyping();
+    }, 4000);
+
+    return () => {
+      window.removeEventListener('loader-complete', handleLoaderComplete);
+      clearTimeout(safetyTimer);
+    };
   }, [delay]);
 
   useEffect(() => {

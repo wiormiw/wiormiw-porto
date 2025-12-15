@@ -43,12 +43,12 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed left-4 top-1/2 z-[100] flex -translate-y-1/2 flex-col items-center gap-2">
+    <div className="fixed top-1/2 left-4 z-[100] flex -translate-y-1/2 flex-col items-center gap-2">
       <motion.div
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 2.5, type: 'spring', stiffness: 200, damping: 20 }}
-        className="bg-blaziken-jet border-blaziken-flame flex flex-col items-center gap-4 rounded-full border-2 py-4 px-3 shadow-[10px_0_30px_rgba(0,0,0,0.5)]"
+        className="bg-blaziken-jet border-blaziken-flame flex flex-col items-center gap-4 rounded-full border-2 px-3 py-4 shadow-[10px_0_30px_rgba(0,0,0,0.5)]"
       >
         {navItems.map((item) => (
           <NavItem
@@ -77,7 +77,7 @@ function NavItem({
   return (
     <div className="group relative flex items-center">
       {/* UPDATED: Tooltip appears on the RIGHT side */}
-      <span className="text-blaziken-jet pointer-events-none absolute left-14 rounded border border-black bg-white px-2 py-1 font-mono text-[10px] font-bold whitespace-nowrap opacity-0 transition-opacity group-hover:opacity-100 shadow-lg z-50">
+      <span className="text-blaziken-jet pointer-events-none absolute left-14 z-50 rounded border border-black bg-white px-2 py-1 font-mono text-[10px] font-bold whitespace-nowrap opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
         {item.label}
       </span>
 

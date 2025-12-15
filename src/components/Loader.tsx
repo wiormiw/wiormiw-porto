@@ -28,6 +28,13 @@ export default function Loader() {
       setIsLoading(false);
       document.body.style.overflow = 'unset';
       clearInterval(textInterval);
+
+      // Dispatch event 500ms into the exit animation.
+      // The exit animation is 0.8s (800ms).
+      // Firing at 500ms means typing starts while the curtain is lifting (last 300ms).
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent('loader-complete'));
+      }, 500);
     }, 2400);
 
     return () => {
@@ -43,7 +50,6 @@ export default function Loader() {
       {isLoading && (
         <motion.div
           key="loader"
-          // Force solid background color and max Z-index
           className="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-[#FFD700]"
           initial={{ opacity: 1 }}
           exit={{ y: '-100%' }}
