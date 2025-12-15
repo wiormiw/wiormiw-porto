@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <div className="font-heading font-bold tracking-widest text-white/90 md:justify-self-center md:text-center">
+          <div className="font-heading font-bold tracking-widest text-white/90 text-center md:justify-self-center">
             WIORMIW PROTOCOL © 2025
           </div>
 
