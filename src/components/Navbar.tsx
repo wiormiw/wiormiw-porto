@@ -45,7 +45,7 @@ export default function Navbar() {
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: elementPosition - offset,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
   };
@@ -56,11 +56,7 @@ export default function Navbar() {
         initial={{ x: isMobile ? 0 : -100, y: isMobile ? -100 : 0, opacity: 0 }}
         animate={{ x: 0, y: 0, opacity: 1 }}
         transition={{ delay: 0.5, type: 'spring', stiffness: 200, damping: 20 }}
-        className="
-          bg-blaziken-jet border-blaziken-flame 
-          flex w-full flex-row items-center justify-around border-b-4 py-3 px-2 shadow-lg
-          md:flex-col md:gap-4 md:rounded-full md:border-4 md:px-3 md:py-5 md:shadow-[10px_0_30px_rgba(0,0,0,0.5)] md:w-auto
-        "
+        className="border-blaziken-flame flex w-full flex-row items-center justify-around border-b-4 bg-neutral-950 px-2 py-3 shadow-lg md:w-auto md:flex-col md:gap-4 md:rounded-full md:border-4 md:px-3 md:py-5 md:shadow-[10px_0_30px_rgba(0,0,0,0.5)]"
       >
         {navItems.map((item) => (
           <NavItem
@@ -97,10 +93,10 @@ function NavItem({
         onClick={onClick}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className={`relative flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full transition-colors duration-300 ${
+        className={`relative flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-300 md:h-12 md:w-12 ${
           isActive
-            ? 'bg-blaziken-core text-blaziken-jet shadow-[0_0_15px_#FFD700]'
-            : 'text-white hover:bg-white/10'
+            ? 'bg-yellow-500 text-black shadow-[0_0_15px_#FFD700]'
+            : 'text-white md:hover:bg-white/10'
         }`}
       >
         <item.icon className="h-5 w-5 md:h-[22px] md:w-[22px]" strokeWidth={2.5} />
@@ -108,7 +104,7 @@ function NavItem({
         {isActive && (
           <motion.div
             layoutId="active-nav"
-            className="bg-blaziken-flame absolute -bottom-1 h-1.5 w-1.5 rounded-full md:bottom-auto md:-right-1 md:h-2 md:w-2"
+            className="bg-blaziken-flame absolute -bottom-1 h-1.5 w-1.5 rounded-full md:-right-1 md:bottom-auto md:h-2 md:w-2"
           />
         )}
       </motion.button>
