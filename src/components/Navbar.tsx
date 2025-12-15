@@ -43,12 +43,12 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed top-1/2 left-4 z-[100] flex -translate-y-1/2 flex-col items-center gap-2">
+    <div className="fixed top-1/2 left-6 z-[100] flex -translate-y-1/2 flex-col items-center gap-4">
       <motion.div
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 2.5, type: 'spring', stiffness: 200, damping: 20 }}
-        className="bg-blaziken-jet border-blaziken-flame flex flex-col items-center gap-4 rounded-full border-2 px-3 py-4 shadow-[10px_0_30px_rgba(0,0,0,0.5)]"
+        className="bg-blaziken-jet border-blaziken-flame flex flex-col items-center gap-6 rounded-full border-4 px-4 py-6 shadow-[10px_0_30px_rgba(0,0,0,0.5)]"
       >
         {navItems.map((item) => (
           <NavItem
@@ -76,8 +76,7 @@ function NavItem({
 
   return (
     <div className="group relative flex items-center">
-      {/* UPDATED: Tooltip appears on the RIGHT side */}
-      <span className="text-blaziken-jet pointer-events-none absolute left-14 z-50 rounded border border-black bg-white px-2 py-1 font-mono text-[10px] font-bold whitespace-nowrap opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+      <span className="text-blaziken-jet pointer-events-none absolute left-24 z-50 rounded border-2 border-black bg-white px-3 py-1 font-mono text-xs font-bold whitespace-nowrap opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
         {item.label}
       </span>
 
@@ -86,18 +85,19 @@ function NavItem({
         onClick={onClick}
         whileHover={{ x: 5 }}
         whileTap={{ scale: 0.9 }}
-        className={`relative flex h-12 w-12 items-center justify-center rounded-full transition-colors duration-300 ${
+        className={`relative flex h-16 w-16 items-center justify-center rounded-full transition-colors duration-300 ${
           isActive
-            ? 'bg-blaziken-core text-blaziken-jet shadow-[0_0_15px_#FFD700]'
+            ? 'bg-blaziken-core text-blaziken-jet shadow-[0_0_20px_#FFD700]'
             : 'text-white hover:bg-white/10'
         }`}
       >
-        <item.icon size={20} strokeWidth={2.5} />
+        {/* Increased Icon size to 28 */}
+        <item.icon size={28} strokeWidth={2.5} />
 
         {isActive && (
           <motion.div
             layoutId="active-nav"
-            className="bg-blaziken-flame absolute -right-1 h-1 w-1 rounded-full"
+            className="bg-blaziken-flame absolute -right-1 h-2 w-2 rounded-full"
           />
         )}
       </motion.button>
