@@ -61,10 +61,10 @@ export default function Hero() {
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
-        <span className="font-mono text-[10px] font-bold tracking-widest text-black">
-          SCROLL_TO_ENGAGE
+        <span className="font-mono text-[14px] font-bold tracking-widest text-black">
+          SCROLL TO ENGAGE
         </span>
-        <ArrowDown className="h-6 w-6 text-black" />
+        <ArrowDown className="h-8 w-8 text-black" />
       </motion.div>
     </section>
   );
