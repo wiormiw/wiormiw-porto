@@ -54,7 +54,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section className="px-4 py-24">
+    <section id="projects" className="px-4 py-24">
       <div className="mx-auto max-w-5xl">
         <h2 className="font-heading text-blaziken-jet border-blaziken-jet mb-12 border-l-8 pl-6 text-3xl font-black">
           Battle Log

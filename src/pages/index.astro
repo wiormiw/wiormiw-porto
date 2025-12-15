@@ -6,11 +6,15 @@ import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import Loader from '../components/Loader';
+import Navbar from '../components/Navbar';
 ---
 
 <Layout title="WIORMIW | Backend Developer">
   <main>
     <Loader client:load />
+    
+    <Navbar client:load />
+
     <Hero client:load />
     <TechStack client:visible />
     <Projects client:visible />

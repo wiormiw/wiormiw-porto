@@ -4,7 +4,10 @@ import Typewriter from './Typewriter';
 
 export default function Hero() {
   return (
-    <section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden"
+    >
       {/* Background Rings */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-20">
         <div className="animate-spin-slow h-[600px] w-[600px] rounded-full border-[2px] border-dashed border-[#7F1D1D]" />

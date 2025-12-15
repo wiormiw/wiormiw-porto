@@ -29,7 +29,7 @@ const skills = [
 
 export default function TechStack() {
   return (
-    <section className="mx-auto max-w-5xl px-4 py-24">
+    <section id="stack" className="mx-auto max-w-5xl px-4 py-24">
       <h2 className="font-heading text-blaziken-jet mb-12 flex items-center justify-center gap-4 text-center text-3xl font-black">
         <span className="bg-blaziken-jet h-[4px] w-12"></span>
         Moveset Proficiency

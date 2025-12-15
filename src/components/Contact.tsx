@@ -3,7 +3,10 @@ import { Send, Sword } from 'lucide-react';
 
 export default function Contact() {
   return (
-    <section className="relative z-20 flex flex-col items-center justify-center overflow-hidden px-4 py-32">
+    <section
+      id="contact"
+      className="relative z-20 flex flex-col items-center justify-center overflow-hidden px-4 py-32"
+    >
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
