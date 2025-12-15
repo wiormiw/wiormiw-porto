@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Download } from 'lucide-react';
 import Typewriter from './Typewriter';
 
 export default function Hero() {
@@ -16,7 +16,7 @@ export default function Hero() {
       </div>
 
       {/* CONTENT */}
-      <div className="z-10 space-y-6 px-4 text-center">
+      <div className="z-10 flex flex-col items-center space-y-6 px-4 text-center">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -28,7 +28,7 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* Name - Tighter Leading to prevent overflow */}
+        {/* Name */}
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -38,7 +38,7 @@ export default function Hero() {
           WIORMIW
         </motion.h1>
 
-        {/* Typewriter - Forced Z-Index to stay on front */}
+        {/* Typewriter */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -52,6 +52,24 @@ export default function Hero() {
             speed={30}
             className="text-black"
           />
+        </motion.div>
+
+        {/* POKEMON STYLE CV BUTTON */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+          className="relative z-30 mt-8"
+        >
+          <a
+            href="https://drive.google.com/file/d/1bT6vEkTMJE8LQRPaFSDrT8rAKjcXMlyj/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-3 border-2 border-black bg-white px-6 py-3 font-mono text-sm font-bold tracking-widest text-black shadow-[4px_4px_0px_#DC2626] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#DC2626] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none"
+          >
+            <Download className="h-5 w-5 animate-bounce" />
+            <span>ACQUIRE TRAINER CARD</span>
+          </a>
         </motion.div>
       </div>
 
