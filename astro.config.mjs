@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://wiormiw.github.io',
-  base: '/portfolio',
+  base: '/wiormiw-porto',
   integrations: [react()],
 
   vite: {
