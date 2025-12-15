@@ -12,7 +12,7 @@ const projects = [
     title: 'SUGGEST ME 2.0',
     desc: 'Application to recommend food based on mood (With Gemini AI).',
     tech: ['Typescript', 'React', 'Vite', 'Tailwind', 'ElysiaJS', 'Tanstack Query', 'PostgreSQL'],
-    link: 'https://github.com/wiormiw',
+    link: 'https://github.com/wiormiw/suggestme-2.0-react',
   },
   {
     title: 'GrowBaksAPI',
