@@ -72,7 +72,7 @@ export default function Typewriter({
           repeat: Infinity,
           ease: 'linear',
         }}
-        className="inline-block w-[0.2em] h-[1em] bg-current ml-1 align-text-bottom"
+        className="ml-1 inline-block h-[1em] w-[0.2em] bg-current align-text-bottom"
       />
     </span>
   );
