@@ -24,7 +24,7 @@ export default function Contact() {
         </p>
 
         <motion.a
-          href="mailto:wwijoyo@gmail.com"
+          href="mailto:wwijoyo2@gmail.com"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="group font-heading relative inline-flex items-center gap-3 overflow-hidden bg-black px-10 py-5 font-bold tracking-widest text-white uppercase transition-colors hover:bg-[#FF5722]"
@@ -34,7 +34,7 @@ export default function Contact() {
           <Send className="h-4 w-4 opacity-50 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
         </motion.a>
 
-        <div className="mt-4 font-mono text-xs font-bold text-gray-600">ID: wwijoyo@gmail.com</div>
+        <div className="mt-4 font-mono text-xs font-bold text-gray-600">ID: wwijoyo2@gmail.com</div>
       </motion.div>
     </section>
   );
