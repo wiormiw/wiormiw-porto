@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 interface TypewriterProps {
   text: string;
@@ -17,21 +18,21 @@ export default function Typewriter({
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    // Standard delay logic (for fallback)
+    // Standard delay logic (fallback)
     const beginTyping = () => {
       setTimeout(() => {
         setStarted(true);
       }, delay);
     };
 
+    // Listen for the custom event from Loader (The "Cheat" Signal)
     const handleLoaderComplete = () => {
-      // Start IMMEDIATELY when the loader says so.
       setStarted(true);
     };
 
     window.addEventListener('loader-complete', handleLoaderComplete);
 
-    // Safety fallback: If loader never fires, start anyway after delay + timeout
+    // Safety fallback
     const safetyTimer = setTimeout(() => {
       if (!started) beginTyping();
     }, 4000);
@@ -59,9 +60,20 @@ export default function Typewriter({
   }, [text, speed, started]);
 
   return (
-    <span className={`font-mono ${className}`}>
+    <span className={`font-mono font-bold ${className}`}>
       {displayedText}
-      <span className="border-blaziken-jet ml-1 animate-pulse border-r-4">&nbsp;</span>
+
+      <motion.span
+        initial={{ opacity: 1 }}
+        animate={{ opacity: [1, 1, 0, 0] }}
+        transition={{
+          duration: 1,
+          times: [0, 0.5, 0.51, 1], // Stays ON for 50%, snaps OFF for 50%
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+        className="inline-block w-[0.2em] h-[1em] bg-current ml-1 align-text-bottom"
+      />
     </span>
   );
 }
