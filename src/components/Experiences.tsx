@@ -1,5 +1,26 @@
 import { motion } from 'framer-motion';
-import { Briefcase, MapPin, Calendar, Server, Database, Radio } from 'lucide-react';
+import {
+  Briefcase,
+  MapPin,
+  Calendar,
+  Server,
+  Database,
+  Radio,
+  Zap,
+  Shield,
+  Crown,
+  Activity,
+  Cpu,
+  Trophy,
+} from 'lucide-react';
+
+const badgeConfig: Record<string, { icon: any; color: string }> = {
+  'Speedster Badge': { icon: Zap, color: 'text-yellow-500' },
+  'SysAdmin Badge': { icon: Shield, color: 'text-blue-500' },
+  'Leadership Badge': { icon: Crown, color: 'text-amber-600' },
+  'Realtime Badge': { icon: Activity, color: 'text-green-500' },
+  'Hardware Badge': { icon: Cpu, color: 'text-purple-500' },
+};
 
 const experiences = [
   {
@@ -8,7 +29,7 @@ const experiences = [
     company: 'PT Fan Integrasi Teknologi (Fanintek)',
     period: 'July 2025 - Present',
     type: 'CURRENT MISSION',
-    desc: 'Optimizing critical API response times by 80%, managing offline RHEL infrastructure, and engineering high-performance search solutions using PostgreSQL GIN indexing.',
+    desc: 'Optimizing critical API response times by 80%, managing offline RHEL infrastructure, and engineering high-performance search solutions using PostgreSQL FTS and GIN indexing.',
     tech: ['.NET', 'C#', 'Typescript', 'RHEL/CentOS', 'PostgreSQL', 'Docker'],
     icon: Server,
     badges: ['Speedster Badge', 'SysAdmin Badge'],
@@ -53,11 +74,8 @@ export default function Experiences() {
       </div>
 
       <div className="relative mx-auto max-w-6xl">
-        {/* Mobile: Left aligned at 24px (center of w-12 icon wrapper) */}
-        {/* Desktop: Center aligned */}
+        {/* Timeline Lines */}
         <div className="absolute top-0 left-6 h-full w-[4px] -translate-x-1/2 bg-black/10 md:left-1/2" />
-
-        {/* The Animated/Gradient Line */}
         <div className="absolute top-0 left-6 h-full w-[4px] -translate-x-1/2 bg-gradient-to-b from-[#FFD700] via-[#DC2626] to-transparent opacity-50 md:left-1/2" />
 
         <div className="flex flex-col gap-8 md:gap-24">
@@ -71,28 +89,22 @@ export default function Experiences() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                // Mobile: Flex row (Icon left, Card right)
-                // Desktop: Flex row (Spacer, Icon, Card) OR Reverse
                 className={`relative flex items-start gap-6 md:items-center md:gap-0 ${
                   isEven ? 'md:flex-row-reverse' : 'md:flex-row'
                 }`}
               >
-                {/* THE "GYM" NODE (Icon) */}
-                {/* Mobile: Relative positioning in the flex flow */}
-                {/* Desktop: Centered absolutely or via flex alignment */}
+                {/* ICON NODE */}
                 <div className="relative z-20 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-4 border-black bg-[#FFD700] shadow-[0_0_20px_#FFD700] md:h-16 md:w-16">
                   <exp.icon className="h-5 w-5 text-black md:h-8 md:w-8" strokeWidth={2.5} />
                 </div>
 
-                {/* THE CARD (Content) */}
-                {/* Mobile: Take remaining width */}
-                {/* Desktop: Take 50% width minus half icon */}
+                {/* CONTENT CARD */}
                 <div className="w-full md:w-[calc(50%-32px)] md:px-8">
                   <motion.div
                     whileHover={{ scale: 1.02, rotate: isEven ? 1 : -1 }}
                     className="relative border-2 border-black bg-white p-4 shadow-[6px_6px_0px_#7F1D1D] transition-all hover:-translate-y-1 hover:shadow-[10px_10px_0px_#DC2626] md:p-6"
                   >
-                    {/* Header - Stacks on mobile, splits on desktop */}
+                    {/* Header */}
                     <div className="mb-4 flex flex-col gap-2 border-b-2 border-dashed border-gray-300 pb-4 sm:flex-row sm:items-start sm:justify-between">
                       <div>
                         <span
@@ -111,7 +123,6 @@ export default function Experiences() {
                         </div>
                       </div>
 
-                      {/* Date & Loc - Aligned left on mobile, right on desktop */}
                       <div className="mt-2 flex shrink-0 flex-col items-start gap-1 sm:mt-0 sm:items-end">
                         <div className="flex items-center gap-1 font-mono text-xs font-bold text-[#DC2626]">
                           <Calendar size={12} />
@@ -124,37 +135,71 @@ export default function Experiences() {
                       </div>
                     </div>
 
-                    {/* Description */}
                     <p className="font-body mb-6 text-sm leading-relaxed font-medium text-gray-800 md:text-base">
                       {exp.desc}
                     </p>
 
-                    {/* Tech & Badges */}
-                    <div className="flex flex-wrap gap-2">
-                      {exp.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="border border-black bg-gray-100 px-2 py-1 font-mono text-[10px] font-bold text-black md:text-xs"
-                        >
-                          {t}
-                        </span>
-                      ))}
+                    {/* Footer: Tech Stack + Badges */}
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                      {/* Tech Stack */}
+                      <div className="flex flex-wrap gap-2">
+                        {exp.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="border border-black bg-gray-100 px-2 py-1 font-mono text-[10px] font-bold text-black md:text-xs"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Badges Section */}
+                      {exp.badges && exp.badges.length > 0 && (
+                        <div className="flex items-center gap-3 border-t-2 border-dashed border-gray-200 pt-2 sm:border-t-0 sm:border-l-2 sm:pt-0 sm:pl-3">
+                          {exp.badges.map((badge) => {
+                            const config = badgeConfig[badge] || {
+                              icon: Trophy,
+                              color: 'text-gray-400',
+                            };
+                            const BadgeIcon = config.icon;
+
+                            return (
+                              <div key={badge} className="group relative">
+                                {/* The Icon */}
+                                <div
+                                  className={`cursor-help transition-transform hover:scale-110 ${config.color}`}
+                                >
+                                  <BadgeIcon size={20} strokeWidth={2.5} />
+                                </div>
+
+                                {/* The Tooltip */}
+                                <div className="absolute bottom-full left-1/2 mb-2 w-max -translate-x-1/2 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                                  <div className="relative border border-black bg-black px-2 py-1 text-[10px] font-bold text-white shadow-[2px_2px_0px_#DC2626]">
+                                    {badge}
+                                    {/* Little triangle pointer */}
+                                    <div className="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-black"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
 
-                    {/* Decorative Corner */}
+                    {/* Decorative Corners */}
                     <div className="absolute -top-1 -right-1 h-3 w-3 bg-black md:h-4 md:w-4" />
                     <div className="absolute -bottom-1 -left-1 h-3 w-3 bg-black md:h-4 md:w-4" />
                   </motion.div>
                 </div>
 
-                {/* Empty spacer for the other side (Desktop only) */}
                 <div className="hidden md:block md:w-[calc(50%-32px)]" />
               </motion.div>
             );
           })}
         </div>
 
-        {/* START POINT */}
+        {/* Start Node */}
         <div className="absolute bottom-0 left-6 h-4 w-4 -translate-x-1/2 border-2 border-black bg-white md:left-1/2" />
       </div>
     </section>
