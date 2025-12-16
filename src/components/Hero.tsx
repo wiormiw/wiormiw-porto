@@ -24,7 +24,7 @@ export default function Hero() {
           className="inline-block skew-x-[-10deg] border-2 border-black bg-[#FFD700]/50 px-6 py-2 shadow-[4px_4px_0px_black] backdrop-blur-sm"
         >
           <span className="font-heading block skew-x-[10deg] text-xs font-black tracking-[0.2em] text-black uppercase">
-            Lv. 99 Distro Hopper
+            Lv. 22 Backend Developer
           </span>
         </motion.div>
 
@@ -47,7 +47,7 @@ export default function Hero() {
         >
           <span className="font-black text-[#DC2626]">{'>'}</span>
           <Typewriter
-            text="Combustive Backend Engineering..."
+            text="Wijoyo Raharjo Murti Indra Wahyono..."
             delay={800}
             speed={30}
             className="text-black"
