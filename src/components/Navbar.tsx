@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import { Home, Zap, Sword, Mail } from 'lucide-react';
+import { Home, Map, Zap, Sword, Mail } from 'lucide-react';
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState('hero');
@@ -15,6 +15,7 @@ export default function Navbar() {
 
   const navItems = [
     { id: 'hero', icon: Home, label: 'Base' },
+    { id: 'experience', icon: Map, label: 'Path' },
     { id: 'stack', icon: Zap, label: 'Power' },
     { id: 'projects', icon: Sword, label: 'Quests' },
     { id: 'contact', icon: Mail, label: 'Comms' },
